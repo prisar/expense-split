@@ -1,0 +1,299 @@
+/* ---Import--- */
+@import "../../../assets/scss/settings";
+
+// login page
+.login-page {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: $white-color;
+  // left page
+  .left-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    background-size: cover;
+    background-image: url("/assets/images/img-01.jpg");
+    position: relative;
+    .white-logo {
+      display: block;
+      width: 270px;
+      height: auto;
+      position: absolute;
+      top: 55px;
+      left: 60px;
+      z-index: 2;
+    }
+    // cover l box
+    .cover-l-box {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      .box-slider {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .bg-login {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      // cover box
+      .bold-title {
+        display: block;
+        margin-bottom: 34px;
+        font-size: 46px;
+        font-weight: 200;
+        color: $white-color;
+        text-align: center;
+        text-transform: capitalize;
+      }
+      .cover-box {
+        width: 577px;
+        height: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .text-box {
+          font-size: 16px;
+          font-weight: 200;
+          color: $white-color;
+          line-height: 26px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  // right page
+  .right-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100vh;
+    position: relative;
+    // cover r box
+    .cover-r-box {
+      width: 300px;
+      height: 393px;
+      position: relative;
+      .black-logo {
+        display: block;
+        width: 66px;
+        margin: 0 auto 86px;
+      }
+      // cover input
+      .cover-input {
+        width: 100%;
+        position: relative;
+        .input-here {
+          padding: 0 10px 10px 20px;
+          margin-bottom: 23px;
+          border-bottom: 1px solid $dove-gray-color;
+          position: relative;
+          &.two {
+            margin-bottom: 25px;
+            .click-icon {
+              padding-left: 2px;
+            }
+          }
+          // click icon
+          .click-icon {
+            display: block;
+            width: 13px;
+            height: 13.3px;
+            position: absolute;
+            top: 5px;
+            left: 2px;
+            .black-icon {
+              display: block;
+              width: auto;
+              height: 14px;
+            }
+            .red-icon {
+              display: none;
+              width: auto;
+              height: 14px;
+            }
+          }
+          // black icon
+          input {
+            width: 100%;
+            height: 26px;
+            font-size: 14px;
+            color: $midnight-color;
+            text-indent: 5px;
+          }
+          // error ver
+          &.error-ver {
+            border-bottom: 1px solid $amaranth-color;
+            .click-icon {
+              .black-icon {
+                display: none;
+              }
+              .red-icon {
+                display: block;
+              }
+            }
+            input {
+              color: $amaranth-color;
+            }
+          }
+        }
+        // text error
+        .text-error {
+          margin-bottom: 6px;
+          font-size: 14px;
+          color: $amaranth-color;
+          position: relative;
+          top: -13px;
+        }
+        // cover check
+        .cover-check {
+          display: block;
+          height: 24px;
+          position: relative;
+          .click-forgot {
+            display: block;
+            font-size: 14px;
+            color: rgba(0, 20, 41, 0.5);
+            text-transform: uppercase;
+            position: absolute;
+            top: 5px;
+            right: 0;
+          }
+        }
+      }
+      .btn-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 170px;
+        height: 56px;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        color: $white-color;
+        background: $he-blue-color;
+        text-transform: uppercase;
+        position: absolute;
+        left: calc(50% - 85px);
+        bottom: 0;
+        cursor: pointer;
+        &:hover {
+          background: lighten($he-blue-color, 10%);
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+// Checkbox
+.cbox {
+  display: block;
+  padding-left: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: 10;
+}
+
+.cbox span {
+  display: inline-block;
+  font-size: 14px;
+  color: rgba(0, 20, 41, 0.5);
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.cbox::before,
+.cbox::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.cbox::before {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid $dove-gray-color;
+}
+
+.cbox::after {
+  display: none;
+  width: 24px;
+  height: 24px;
+  // background-image: url("/assets/images/yellow-check.svg");
+}
+
+input:checked + .cbox::before {
+  border-color: transparent;
+}
+
+input:checked + .cbox::after {
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+input::-webkit-input-placeholder {
+  opacity: 1;
+  color: rgba(40, 40, 40, 0.5);
+  text-transform: uppercase;
+}
+
+input:-moz-placeholder {
+  opacity: 1;
+  color: rgba(40, 40, 40, 0.5);
+  text-transform: uppercase;
+}
+
+input::-moz-placeholder {
+  opacity: 1;
+  color: rgba(40, 40, 40, 0.5);
+  text-transform: uppercase;
+}
+
+input:-ms-input-placeholder {
+  opacity: 1;
+  color: rgba(40, 40, 40, 0.5);
+  text-transform: uppercase;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+
+input:focus:-moz-placeholder {
+  color: transparent;
+}
+
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+
+textarea:focus::-webkit-input-placeholder,
+textarea:focus:-moz-placeholder,
+textarea:focus::-moz-placeholder,
+textarea:focus:-ms-input-placeholder {
+  color: transparent;
+}

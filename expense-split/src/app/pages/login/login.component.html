@@ -1,0 +1,53 @@
+<div class="login-page">
+  <div class="left-page">
+    <!-- <img src="assets/images/logo01.svg" alt="logo" class="white-logo" /> -->
+    <!-- <div class="cover-l-box">
+      <app-slick-carousel [data]="sliderData"></app-slick-carousel>
+    </div> -->
+    <!-- end/cover l box -->
+  </div>
+  <!-- end/left page -->
+  <div class="right-page">
+    <form class="cover-r-box" [formGroup]="loginForm" (ngSubmit)="login()" #f="ngForm" novalidate>
+      <!-- <img src="assets/images/logo03.svg" alt="logo" class="black-logo" /> -->
+      <div class="cover-input">
+        <div class="input-here" [ngClass]="{'error-ver': loginForm.controls.email.errors && f.submitted}">
+          <input type="text" placeholder="email" formControlName="email" tabindex="2" />
+          <a href="javascript:;" class="click-icon">
+            <!-- <img src="assets/images/user.svg" alt="logo" class="black-icon" /> -->
+            <!-- <img src="assets/images/user01.svg" alt="logo" class="red-icon" /> -->
+          </a>
+        </div>
+        <!-- end/input here -->
+        <div class="input-here two" [ngClass]="{'error-ver': loginForm.controls.password.errors && f.submitted}">
+          <input type="password" placeholder="password" formControlName="password" tabindex="3" />
+          <a href="javascript:;" class="click-icon">
+            <!-- <img src="assets/images/password.svg" alt="logo" class="black-icon" /> -->
+            <!-- <img src="assets/images/password01.svg" alt="logo" class="red-icon" /> -->
+          </a>
+        </div>
+        <!-- end/input here -->
+        <span class="text-error" *ngIf="(loginForm.invalid && f.submitted) || txtError !== ''">{{
+          loginForm.controls.email.hasError('required') && loginForm.controls.password.hasError('required') ? 'Email
+          and Password is required' :
+          loginForm.controls.email.hasError('required') ? 'Email is required' :
+          loginForm.controls.email.hasError('email') ? 'Email must be a valid email address' :
+          loginForm.controls.password.hasError('required') ? 'Password is required' : txtError}}</span>
+        <!-- end/text error -->
+        <div class="cover-check">
+          <input type="checkbox" id="check-li01">
+          <label for="check-li01" class="cbox">
+            <span>REMEMBER ME</span>
+          </label>
+          <a href="javascript:;" class="click-forgot" tabindex="4" [routerLink]="['/forgot-password']">FORGOT PASSWORD</a>
+        </div>
+        <!-- end/cover check -->
+      </div>
+      <!-- end/cover input -->
+      <button type="submit" class="btn-login">LOGIN</button>
+    </form>
+    <!-- end/cover r box -->
+  </div>
+  <!-- end/right page -->
+</div>
+<!-- end/login page -->

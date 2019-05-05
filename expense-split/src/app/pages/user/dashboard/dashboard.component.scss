@@ -1,0 +1,63 @@
+/* ---Import--- */
+@import "./src/assets/scss/_settings.scss";
+
+/* ---User Dashboard Page--- */
+.user-dashboard-page {
+  width: 100%;
+  height: calc(100vh - 70px);
+  padding: 30px 25px 55px 115px;
+  background: $whisper-color;
+  position: relative;
+
+  h1 {
+    line-height: 33px;
+    font-size: 26px;
+    font-weight: 600;
+    color: $midnight-color;
+  }
+
+  .wrapper-all-content {
+    display: flex;
+    width: 100%;
+    position: relative;
+
+    .big-left-group {
+      width: 50%;
+      position: relative;
+    }
+
+    .big-right-group {
+      width: 50%;
+      padding-top: 30px;
+      padding-left: 32px;
+      position: relative;
+
+      app-customer-report-status {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Graph Statistics
+.graph-statistics {
+  width: 100%;
+  height: 360px;
+  margin-bottom: 35px;
+  position: relative;
+  .white-box {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+// Report Statistics
+.report-statistics {
+  display: flex;
+  width: 100%;
+  min-height: 468px;
+  position: relative;
+}

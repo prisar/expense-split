@@ -1,53 +1,85 @@
-/* jshint indent: 2 */
+const _ = require('lodash')
+const mongoose = require('mongoose')
+const validator = require('validator')
+const constants = require('../../app-constants')
 
-module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('User', {
-    Id: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
-    },
-    FirstName: {
-      type: DataTypes.STRING(256),
-      allowNull: false
-    },
-    LastName: {
-      type: DataTypes.STRING(256),
-      allowNull: false
-    },
-    Mobile: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
-    },
-    Email: {
-      type: DataTypes.STRING(100),
-      allowNull: false
-    },
-    CreatedBy: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
-    },
-    CreateOn: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
-    },
-    ModifiedBy: {
-      type: DataTypes.INTEGER(11),
-      allowNull: true
-    },
-    ModifiedOn: {
-      type: DataTypes.DATE,
-      allowNull: true
-    },
-    ActiveFlag: {
-      type: DataTypes.INTEGER(1),
-      allowNull: false
-    },
-    Role: {
-      type: DataTypes.INTEGER(11),
-      allowNull: false
+/**
+ * The User schema.
+ */
+const schema = new mongoose.Schema({
+  name: {
+    required: true,
+    type: String
+  },
+  email: {
+    required: true,
+    type: String,
+    unique: true,
+    validate: {
+      validator: validator.isEmail,
+      message: 'email is invalid',
+      isAsync: false
     }
-  }, {
-    tableName: 'User'
-  });
-};
+  },
+  passwordHash: {
+    required: true,
+    type: String
+  },
+  role: {
+    required: true,
+    type: String,
+    enum: _.values(constants.UserRoles)
+  },
+  company: {
+    required: false,
+    type: String
+  },
+  phone: {
+    required: false,
+    type: String
+  },
+  // agent is applicable for client
+  agent: {
+    required: false,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  createdBy: {
+    required: false,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  lastModifiedBy: {
+    required: false,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  forgotPasswordToken: {
+    required: false,
+    type: String
+  },
+  forgotPasswordTokenValidUntil: {
+    required: false,
+    type: Date
+  },
+  defaults: {
+    required: false,
+    type: {
+      softCost: String,
+      infraCost: String,
+      laborCost: String,
+      laborUtil: String,
+      nummTests: String,
+      avgDefects: String
+    }
+  },
+  avatarUrl: {
+    required: false,
+    type: String
+  }
+}, { timestamps: { createdAt: 'createdOn', updatedAt: 'lastModifiedOn' } })
+
+schema.index({ email: 1 })
+schema.index({ role: 1 })
+
+module.exports = schema

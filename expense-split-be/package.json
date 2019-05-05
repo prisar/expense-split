@@ -4,14 +4,32 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
-  "author": "",
+  "author": "prisar",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "cors": "^2.8.5",
-    "express": "^4.16.4",
-    "sequelize": "^5.7.1"
+    "bcryptjs": "^2.4.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.15.1",
+    "config": "^3.0.0",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "get-parameter-names": "^0.3.0",
+    "http-status-codes": "^1.3.0",
+    "joi": "^14.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.11",
+    "mongoose": "^5.3.13",
+    "morgan": "^1.7.0",
+    "ms": "^2.1.1",
+    "nodemailer": "^4.6.7",
+    "uuid": "^3.3.2",
+    "validator": "^10.9.0",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
   }
 }
